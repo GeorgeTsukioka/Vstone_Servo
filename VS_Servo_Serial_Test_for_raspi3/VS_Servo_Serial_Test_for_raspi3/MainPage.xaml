@@ -1,0 +1,34 @@
+﻿<Page
+    x:Class="VS_Servo_Serial_Test_for_raspi3.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:VS_Servo_Serial_Test_for_raspi3"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <CollectionViewSource x:Name="DeviceListSource"/>
+    </Page.Resources>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <TextBlock HorizontalAlignment="Left" Margin="41,36,0,0" TextWrapping="Wrap" Text="serial port" VerticalAlignment="Top"/>
+        <Button x:Name="comPort_connect" Content="Connect" HorizontalAlignment="Left" Margin="41,89,0,0" VerticalAlignment="Top" Width="105" Click="comPort_connect_Click"/>
+
+        <ListBox x:Name="ConnectDevices" ScrollViewer.HorizontalScrollMode="Enabled" ScrollViewer.HorizontalScrollBarVisibility="Visible" ItemsSource="{Binding Source={StaticResource DeviceListSource}}" Width="390" Height="58" Background="Gray" Margin="135,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Id}" />
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Button x:Name="comPort_disconnect_Copy" Content="Disconnect" HorizontalAlignment="Left" Margin="212,89,0,0" VerticalAlignment="Top" Width="105" Click="comPort_disconnect_Click"/>
+        <TextBlock HorizontalAlignment="Left" Margin="41,173,0,0" TextWrapping="Wrap" Text="Servo ID" VerticalAlignment="Top"/>
+        <ComboBox x:Name="ServoID" HorizontalAlignment="Left" Margin="135,168,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ServoID_SelectionChanged"/>
+        <Button x:Name="servo_on" Content="servo on" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="317,168,0,0" Click="servo_on_Click"/>
+        <Button x:Name="servo_off" Content="servo off" HorizontalAlignment="Left" Margin="447,167,0,0" VerticalAlignment="Top" Click="servo_off_Click"/>
+        <Slider x:Name="Servo_Pos_Slider" HorizontalAlignment="Left" Margin="146,298,0,0" VerticalAlignment="Top" Width="100" ValueChanged="Servo_Pos_Slider_ValueChanged" Maximum="180" LargeChange="1"/>
+        <TextBlock x:Name="servo_pos_analog" HorizontalAlignment="Left" Margin="317,305,0,0" TextWrapping="Wrap" Text="target pos" VerticalAlignment="Top"/>
+
+    </Grid>
+</Page>
